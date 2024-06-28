@@ -16,8 +16,8 @@
 		D3C2C4462C1ADB4A0087564F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D3C2C4452C1ADB4A0087564F /* Base */; };
 		D3C2C4482C1ADB4B0087564F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C2C4472C1ADB4B0087564F /* Assets.xcassets */; };
 		D3C2C44B2C1ADB4B0087564F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D3C2C44A2C1ADB4B0087564F /* Base */; };
-		D3C2C45B2C1C13F60087564F /* CoreML_enhance_color-llie-ResCBAM_g-AEFT-256.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = D3C2C45A2C1C13F60087564F /* CoreML_enhance_color-llie-ResCBAM_g-AEFT-256.mlpackage */; };
 		D3C2C45D2C1CFC170087564F /* CoreML_CPGANet_AE20FT.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = D3C2C45C2C1CFC170087564F /* CoreML_CPGANet_AE20FT.mlpackage */; };
+		D3CEEBC22C2DFEC00092B7FF /* CoreML_CPGANet_AE20FT.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = D3CEEBC12C2DFEC00092B7FF /* CoreML_CPGANet_AE20FT.mlpackage */; };
 		D3D0F7BB2C1D4863003DC739 /* CoreML_CPGANet_expe.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = D3D0F7BA2C1D4863003DC739 /* CoreML_CPGANet_expe.mlpackage */; };
 /* End PBXBuildFile section */
 
@@ -34,8 +34,8 @@
 		D3C2C4472C1ADB4B0087564F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3C2C44A2C1ADB4B0087564F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3C2C44C2C1ADB4B0087564F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D3C2C45A2C1C13F60087564F /* CoreML_enhance_color-llie-ResCBAM_g-AEFT-256.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = "CoreML_enhance_color-llie-ResCBAM_g-AEFT-256.mlpackage"; path = "../../BDCP-LLNet-PyTorch/CoreML_enhance_color-llie-ResCBAM_g-AEFT-256.mlpackage"; sourceTree = "<group>"; };
 		D3C2C45C2C1CFC170087564F /* CoreML_CPGANet_AE20FT.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = CoreML_CPGANet_AE20FT.mlpackage; path = "../../BDCP-LLNet-PyTorch/CoreML_CPGANet_AE20FT.mlpackage"; sourceTree = "<group>"; };
+		D3CEEBC12C2DFEC00092B7FF /* CoreML_CPGANet_AE20FT.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = CoreML_CPGANet_AE20FT.mlpackage; path = "../../BDCP-LLNet-PyTorch/CoreML_CPGANet_AE20FT.mlpackage"; sourceTree = "<group>"; };
 		D3D0F7BA2C1D4863003DC739 /* CoreML_CPGANet_expe.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = CoreML_CPGANet_expe.mlpackage; path = "../../BDCP-LLNet-PyTorch/CoreML_CPGANet_expe.mlpackage"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,8 +81,8 @@
 				D3C2C45C2C1CFC170087564F /* CoreML_CPGANet_AE20FT.mlpackage */,
 				D3C2C4492C1ADB4B0087564F /* LaunchScreen.storyboard */,
 				D3C2C44C2C1ADB4B0087564F /* Info.plist */,
-				D3C2C45A2C1C13F60087564F /* CoreML_enhance_color-llie-ResCBAM_g-AEFT-256.mlpackage */,
 				D3D0F7BA2C1D4863003DC739 /* CoreML_CPGANet_expe.mlpackage */,
+				D3CEEBC12C2DFEC00092B7FF /* CoreML_CPGANet_AE20FT.mlpackage */,
 			);
 			path = IE_IOS;
 			sourceTree = "<group>";
@@ -158,8 +158,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3C2C45B2C1C13F60087564F /* CoreML_enhance_color-llie-ResCBAM_g-AEFT-256.mlpackage in Sources */,
 				D30862F62C253A450028A0B0 /* StartViewController.swift in Sources */,
+				D3CEEBC22C2DFEC00092B7FF /* CoreML_CPGANet_AE20FT.mlpackage in Sources */,
 				D3C2C45D2C1CFC170087564F /* CoreML_CPGANet_AE20FT.mlpackage in Sources */,
 				D3C2C4432C1ADB4A0087564F /* ViewController.swift in Sources */,
 				D3C2C43F2C1ADB4A0087564F /* AppDelegate.swift in Sources */,

@@ -124,6 +124,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TMZ-5F-F32">
                                 <rect key="frame" x="20" y="20" width="390" height="757"/>
                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Runtime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G2-fQ-gnx">
                                 <rect key="frame" x="183.66666666666666" y="787" width="63" height="21"/>
@@ -172,8 +173,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1K-9q-4cl">
-                                <rect key="frame" x="181.66666666666666" y="448.66666666666669" width="67" height="35"/>
+                                <rect key="frame" x="180" y="431" width="70" height="70"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="1pB-MB-8G9"/>
+                                    <constraint firstAttribute="height" constant="70" id="650-ps-XK4"/>
+                                </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Close"/>
@@ -185,8 +190,8 @@
                         <viewLayoutGuide key="safeArea" id="owM-MI-b6X"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="d1K-9q-4cl" firstAttribute="centerY" secondItem="fgu-h0-rqJ" secondAttribute="centerY" id="g8L-N8-bDq"/>
-                            <constraint firstItem="d1K-9q-4cl" firstAttribute="centerX" secondItem="fgu-h0-rqJ" secondAttribute="centerX" id="vyN-CJ-f0q"/>
+                            <constraint firstItem="d1K-9q-4cl" firstAttribute="centerY" secondItem="fgu-h0-rqJ" secondAttribute="centerY" id="Hf9-Hx-CiN"/>
+                            <constraint firstItem="d1K-9q-4cl" firstAttribute="centerX" secondItem="fgu-h0-rqJ" secondAttribute="centerX" id="wmZ-ZL-9ed"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="settings" image="command.square" catalog="system" selectedImage="command.square.fill" id="lqi-xt-ijR"/>

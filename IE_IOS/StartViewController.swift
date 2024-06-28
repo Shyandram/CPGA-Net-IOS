@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import CoreML
 
 
 class StartViewController: UIViewController {
@@ -60,11 +61,14 @@ class StartViewController: UIViewController {
     
     func createModel() -> (CoreML_CPGANet_AE20FT?, CoreML_CPGANet_expe?){
         
+        let config = MLModelConfiguration()
+        config.computeUnits = .cpuAndGPU
+        
         // Load CoreML model
-        guard let model = try? CoreML_CPGANet_AE20FT() else {
+        guard let model = try? CoreML_CPGANet_AE20FT(configuration: config) else {
             fatalError("Failed to load CoreML model.")
         }
-        guard let modelexpe = try? CoreML_CPGANet_expe() else {
+        guard let modelexpe = try? CoreML_CPGANet_expe(configuration: config) else {
             fatalError("Failed to load CoreML model.")
         }
         return (model, modelexpe)
