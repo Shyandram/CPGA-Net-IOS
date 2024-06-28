@@ -7,17 +7,19 @@
 
 import UIKit
 
-class CameraViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class CameraViewController: UIViewController {
 
     @IBOutlet var modelSwitch: UISwitch!
     @IBOutlet var labelRuntime: UILabel!
     @IBOutlet weak var cameraImage: UIImageView!
     
     var showImage: UIImage?
+    var enhanceImage: UIImage?
     var model: CoreML_CPGANet_AE20FT?
     var modelexpe: CoreML_CPGANet_expe?
     var receivedVariable: String?
     var enhanceState = false
+    var showImageState = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
     }
     */
     @IBAction func cameraPressButton(_ sender: Any) {
+        enhanceImage = nil
         let imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePicker.sourceType = .camera
@@ -58,6 +61,15 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func albumPressButton(_ sender: Any) {
+        enhanceImage = nil
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
     }
     
     @IBAction func buttonIE(_ sender: Any) {
@@ -79,17 +91,31 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
         }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            cameraImage.image = image
-            showImage = image
-        }
-        dismiss(animated: true, completion: nil)
+    @IBAction func changeModelSwitch(_ sender: Any) {
+        enhanceState = false
     }
-
-//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-//        dismiss(animated: true, completion: nil)
-//    }
+    
+    @IBAction func saveImage(_ sender: Any) {
+        guard let inputImage = enhanceImage else {
+            print("No image to save!")
+            return}
+        UIImageWriteToSavedPhotosAlbum(inputImage, nil, nil, nil)
+    }
+    
+    @IBAction func switchEnhanceImage(_ sender: Any) {
+        guard (enhanceImage != nil) && (showImage != nil) else{
+            print("No image to show and switch!")
+            return
+        }
+        if showImageState{
+            cameraImage.image = showImage
+            showImageState = false
+        } else{
+            cameraImage.image = enhanceImage
+            showImageState = true
+        }
+    }
+    
     func useCoreMLModel() {
         // Prepare input image
         guard var img = showImage else{
@@ -99,6 +125,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
         if enhanceState {
             cameraImage.image = showImage
             enhanceState = false
+            showImageState = false
             return
         }
         img = fixOrientation(of: img)
@@ -110,6 +137,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
         modelPrediction(index: i, pixelBuffer: pixelBuffer)
         
         enhanceState = true
+        showImageState = true
     }
     func modelPrediction(index: Int, pixelBuffer: CVPixelBuffer){
         switch index{
@@ -124,7 +152,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
                 let prediction = try model!.prediction(input: input)
                 // Process prediction result
                 print(prediction.colorOutput)
-                cameraImage.image = imageFromPixelBuffer(pixelBuffer: prediction.colorOutput)
+                enhanceImage = imageFromPixelBuffer(pixelBuffer: prediction.colorOutput)
+                cameraImage.image = enhanceImage
             } catch {
                 fatalError("Failed to make prediction: \(error.localizedDescription)")
             }
@@ -139,7 +168,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
                 let prediction = try modelexpe!.prediction(input: input)
                 // Process prediction result
                 print(prediction.colorOutput)
-                cameraImage.image = imageFromPixelBuffer(pixelBuffer: prediction.colorOutput)
+                enhanceImage = imageFromPixelBuffer(pixelBuffer: prediction.colorOutput)
+                cameraImage.image = enhanceImage
             } catch {
                 fatalError("Failed to make prediction: \(error.localizedDescription)")
             }
@@ -171,4 +201,28 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
         return normalizedImage
     }
 
+}
+extension CameraViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        switch picker.sourceType{
+        case .camera:
+            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                cameraImage.image = image
+                showImage = image
+            }
+        case .photoLibrary:
+            print("\(info)")
+            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                cameraImage.image = image
+                showImage = image
+            }
+        default:
+            return
+        }
+        picker.dismiss(animated: true, completion: nil)
+        
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
