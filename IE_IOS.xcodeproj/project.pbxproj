@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D30862F42C25359B0028A0B0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30862F32C25359B0028A0B0 /* CameraViewController.swift */; };
 		D30862F62C253A450028A0B0 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30862F52C253A450028A0B0 /* StartViewController.swift */; };
+		D31A9B7F2C2E827B00F68520 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31A9B7E2C2E827B00F68520 /* AlbumViewController.swift */; };
 		D33C7B6E2C26624B00B34714 /* CommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33C7B6D2C26624B00B34714 /* CommandViewController.swift */; };
 		D3C2C43F2C1ADB4A0087564F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2C43E2C1ADB4A0087564F /* AppDelegate.swift */; };
 		D3C2C4412C1ADB4A0087564F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2C4402C1ADB4A0087564F /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		D30862F32C25359B0028A0B0 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		D30862F52C253A450028A0B0 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		D31A9B7E2C2E827B00F68520 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		D33C7B6C2C26589900B34714 /* IE_IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IE_IOS.entitlements; sourceTree = "<group>"; };
 		D33C7B6D2C26624B00B34714 /* CommandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandViewController.swift; sourceTree = "<group>"; };
 		D3C2C43B2C1ADB4A0087564F /* IE_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IE_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +71,7 @@
 		D3C2C43D2C1ADB4A0087564F /* IE_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				D31A9B7E2C2E827B00F68520 /* AlbumViewController.swift */,
 				D33C7B6D2C26624B00B34714 /* CommandViewController.swift */,
 				D33C7B6C2C26589900B34714 /* IE_IOS.entitlements */,
 				D3C2C43E2C1ADB4A0087564F /* AppDelegate.swift */,
@@ -164,6 +167,7 @@
 				D3C2C4432C1ADB4A0087564F /* ViewController.swift in Sources */,
 				D3C2C43F2C1ADB4A0087564F /* AppDelegate.swift in Sources */,
 				D30862F42C25359B0028A0B0 /* CameraViewController.swift in Sources */,
+				D31A9B7F2C2E827B00F68520 /* AlbumViewController.swift in Sources */,
 				D3D0F7BB2C1D4863003DC739 /* CoreML_CPGANet_expe.mlpackage in Sources */,
 				D33C7B6E2C26624B00B34714 /* CommandViewController.swift in Sources */,
 				D3C2C4412C1ADB4A0087564F /* SceneDelegate.swift in Sources */,

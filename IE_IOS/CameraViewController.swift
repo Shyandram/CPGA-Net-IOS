@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CameraViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class CameraViewController: UIViewController {
 
     @IBOutlet var modelSwitch: UISwitch!
     @IBOutlet var labelRuntime: UILabel!
@@ -60,6 +60,15 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
         }
     }
     
+    @IBAction func albumPressButton(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
     @IBAction func buttonIE(_ sender: Any) {
 //        guard IEButton.currentTitle=="Enhance" else{
 //            let start = CFAbsoluteTimeGetCurrent()
@@ -79,17 +88,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
         }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            cameraImage.image = image
-            showImage = image
-        }
-        dismiss(animated: true, completion: nil)
-    }
-
-//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-//        dismiss(animated: true, completion: nil)
-//    }
     func useCoreMLModel() {
         // Prepare input image
         guard var img = showImage else{
@@ -171,4 +169,28 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
         return normalizedImage
     }
 
+}
+extension CameraViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        switch picker.sourceType{
+        case .camera:
+            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                cameraImage.image = image
+                showImage = image
+            }
+        case .photoLibrary:
+            print("\(info)")
+            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                cameraImage.image = image
+                showImage = image
+            }
+        default:
+            return
+        }
+        picker.dismiss(animated: true, completion: nil)
+        
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

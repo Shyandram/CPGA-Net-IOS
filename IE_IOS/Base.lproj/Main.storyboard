@@ -3,6 +3,7 @@
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -83,7 +84,9 @@
                             <constraint firstItem="NxD-aT-j4t" firstAttribute="height" secondItem="caq-DF-Ym9" secondAttribute="height" id="z1f-yG-2y1"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Demo" image="d.square" catalog="system" selectedImage="d.square.fill" id="mOm-xC-22w"/>
+                    <tabBarItem key="tabBarItem" title="Demo" image="d.square" catalog="system" id="mOm-xC-22w">
+                        <imageReference key="selectedImage" image="d.square.fill" catalog="system" variableValue="0.0"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="DdA-xC-Rwj"/>
                     <connections>
                         <outlet property="IEButton" destination="fWD-6Q-dJq" id="XJn-Mb-Kyu"/>
@@ -106,7 +109,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YC-zn-Z4M">
-                                <rect key="frame" x="20" y="828" width="84" height="35"/>
+                                <rect key="frame" x="20" y="848" width="84" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Camera"/>
                                 <connections>
@@ -123,7 +128,6 @@
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TMZ-5F-F32">
                                 <rect key="frame" x="20" y="20" width="390" height="757"/>
-                                <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <gestureRecognizers/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Runtime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G2-fQ-gnx">
@@ -135,22 +139,35 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YgT-J5-BjD">
                                 <rect key="frame" x="190.66666666666666" y="830" width="51" height="31"/>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWp-66-LaN">
+                                <rect key="frame" x="21.333333333333336" y="798" width="81.333333333333314" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Albums"/>
+                                <connections>
+                                    <action selector="albumPressButton:" destination="ccK-fh-GUW" eventType="touchUpInside" id="tLH-xN-cps"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="L6Z-OA-89d"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5G2-fQ-gnx" firstAttribute="top" secondItem="TMZ-5F-F32" secondAttribute="bottom" constant="10" id="45a-mY-bZm"/>
-                            <constraint firstItem="L6Z-OA-89d" firstAttribute="bottom" secondItem="7YC-zn-Z4M" secondAttribute="bottom" constant="20" id="5Oq-PK-u3c"/>
+                            <constraint firstItem="L6Z-OA-89d" firstAttribute="bottom" secondItem="7YC-zn-Z4M" secondAttribute="bottom" id="5Oq-PK-u3c"/>
                             <constraint firstItem="YgT-J5-BjD" firstAttribute="centerX" secondItem="dBb-9y-zdz" secondAttribute="centerX" id="7Xl-fi-hEE"/>
                             <constraint firstItem="5G2-fQ-gnx" firstAttribute="centerX" secondItem="dBb-9y-zdz" secondAttribute="centerX" id="8au-WM-EW0"/>
                             <constraint firstItem="TMZ-5F-F32" firstAttribute="top" secondItem="L6Z-OA-89d" secondAttribute="top" constant="20" id="Rxx-uj-AV9"/>
-                            <constraint firstItem="7YC-zn-Z4M" firstAttribute="top" secondItem="5G2-fQ-gnx" secondAttribute="bottom" constant="20" id="TXd-AV-bBi"/>
-                            <constraint firstItem="YgT-J5-BjD" firstAttribute="centerY" secondItem="7YC-zn-Z4M" secondAttribute="centerY" id="U3Z-OK-7eo"/>
+                            <constraint firstItem="7YC-zn-Z4M" firstAttribute="top" secondItem="5G2-fQ-gnx" secondAttribute="bottom" constant="40" id="TXd-AV-bBi"/>
+                            <constraint firstItem="YgT-J5-BjD" firstAttribute="centerY" secondItem="7YC-zn-Z4M" secondAttribute="centerY" constant="-20" id="U3Z-OK-7eo"/>
+                            <constraint firstItem="7YC-zn-Z4M" firstAttribute="top" secondItem="wWp-66-LaN" secondAttribute="bottom" constant="15" id="Xgw-Vh-3Dm"/>
                             <constraint firstItem="TMZ-5F-F32" firstAttribute="leading" secondItem="L6Z-OA-89d" secondAttribute="leading" constant="20" id="bH8-CZ-Mxd"/>
                             <constraint firstItem="L6Z-OA-89d" firstAttribute="trailing" secondItem="nN2-uM-J9f" secondAttribute="trailing" constant="20" id="gRu-Mc-uNX"/>
+                            <constraint firstItem="YgT-J5-BjD" firstAttribute="leading" secondItem="7YC-zn-Z4M" secondAttribute="trailing" constant="86.666666666666657" id="jpy-WK-uAO"/>
                             <constraint firstItem="L6Z-OA-89d" firstAttribute="trailing" secondItem="TMZ-5F-F32" secondAttribute="trailing" constant="20" id="jxo-a2-5kr"/>
+                            <constraint firstItem="wWp-66-LaN" firstAttribute="centerX" secondItem="7YC-zn-Z4M" secondAttribute="centerX" id="lKc-72-oLD"/>
                             <constraint firstItem="L6Z-OA-89d" firstAttribute="bottom" secondItem="nN2-uM-J9f" secondAttribute="bottom" constant="20" id="ndH-XY-Sb0"/>
-                            <constraint firstItem="7YC-zn-Z4M" firstAttribute="leading" secondItem="L6Z-OA-89d" secondAttribute="leading" constant="20" id="ywv-mc-XvF"/>
+                            <constraint firstItem="7YC-zn-Z4M" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L6Z-OA-89d" secondAttribute="leading" id="ywv-mc-XvF"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="camera" image="camera" catalog="system" selectedImage="camera.fill" id="zDl-EE-Fur"/>
@@ -198,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kml-wL-k8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2468" y="277"/>
+            <point key="canvasLocation" x="3558" y="277"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="8VV-QF-EBr">
@@ -251,12 +268,90 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="0p3-bk-kaS"/>
                         <segue destination="ccK-fh-GUW" kind="relationship" relationship="viewControllers" id="eOY-ch-Pxf"/>
+                        <segue destination="NX0-eY-rkF" kind="relationship" relationship="viewControllers" id="SGq-ch-gJl"/>
                         <segue destination="Naj-AQ-B6r" kind="relationship" relationship="viewControllers" id="2Wv-Tr-ZPX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHo-wi-BMD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1755" y="-546"/>
+        </scene>
+        <!--albums-->
+        <scene sceneID="POy-v6-NMy">
+            <objects>
+                <viewController id="NX0-eY-rkF" customClass="AlbumViewController" customModule="IE_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PF1-Ac-1dJ">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCf-Lj-pIF">
+                                <rect key="frame" x="20" y="828" width="81.333333333333329" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Albums"/>
+                                <connections>
+                                    <action selector="selectPhotoTap:" destination="NX0-eY-rkF" eventType="touchUpInside" id="GWo-eE-TJf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yEJ-nW-NUc">
+                                <rect key="frame" x="320" y="828" width="90" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Enhance"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZuJ-ry-VKE">
+                                <rect key="frame" x="20" y="20" width="390" height="757"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="757" id="Ywc-Ok-UO5"/>
+                                    <constraint firstAttribute="width" constant="390" id="qRf-3P-akB"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Runtime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulm-kN-u0m">
+                                <rect key="frame" x="183.66666666666666" y="787" width="63" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ovi-ea-AuY">
+                                <rect key="frame" x="190.66666666666666" y="830" width="51" height="31"/>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptR-53-t8x">
+                                <rect key="frame" x="20" y="20" width="390" height="757"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="selectPhotoTap:" destination="NX0-eY-rkF" eventType="touchUpInside" id="t2x-50-YxZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="L5g-nZ-4f2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ovi-ea-AuY" firstAttribute="centerY" secondItem="yCf-Lj-pIF" secondAttribute="centerY" id="2d6-Er-Fcu"/>
+                            <constraint firstItem="yCf-Lj-pIF" firstAttribute="top" secondItem="ulm-kN-u0m" secondAttribute="bottom" constant="20" id="9L5-O3-5sb"/>
+                            <constraint firstItem="yCf-Lj-pIF" firstAttribute="leading" secondItem="L5g-nZ-4f2" secondAttribute="leading" constant="20" id="Ivz-ox-2A5"/>
+                            <constraint firstItem="ptR-53-t8x" firstAttribute="top" secondItem="L5g-nZ-4f2" secondAttribute="top" constant="20" id="M1k-4y-LLm"/>
+                            <constraint firstItem="ptR-53-t8x" firstAttribute="width" secondItem="ZuJ-ry-VKE" secondAttribute="width" id="M4b-6T-dDH"/>
+                            <constraint firstItem="L5g-nZ-4f2" firstAttribute="bottom" secondItem="yEJ-nW-NUc" secondAttribute="bottom" constant="20" id="PHb-lV-uyy"/>
+                            <constraint firstItem="ZuJ-ry-VKE" firstAttribute="leading" secondItem="L5g-nZ-4f2" secondAttribute="leading" constant="20" id="QRe-fm-VS9"/>
+                            <constraint firstItem="Ovi-ea-AuY" firstAttribute="centerX" secondItem="PF1-Ac-1dJ" secondAttribute="centerX" id="QWs-lA-Nz5"/>
+                            <constraint firstItem="ptR-53-t8x" firstAttribute="height" secondItem="ZuJ-ry-VKE" secondAttribute="height" id="X40-XK-O2b"/>
+                            <constraint firstItem="ulm-kN-u0m" firstAttribute="centerX" secondItem="PF1-Ac-1dJ" secondAttribute="centerX" id="ZQI-tP-MPY"/>
+                            <constraint firstItem="ptR-53-t8x" firstAttribute="leading" secondItem="L5g-nZ-4f2" secondAttribute="leading" constant="20" id="fxE-ha-iB9"/>
+                            <constraint firstItem="L5g-nZ-4f2" firstAttribute="trailing" secondItem="ZuJ-ry-VKE" secondAttribute="trailing" constant="20" id="itR-YQ-DMT"/>
+                            <constraint firstItem="L5g-nZ-4f2" firstAttribute="trailing" secondItem="yEJ-nW-NUc" secondAttribute="trailing" constant="20" id="mGT-Wy-IFO"/>
+                            <constraint firstItem="ulm-kN-u0m" firstAttribute="top" secondItem="ZuJ-ry-VKE" secondAttribute="bottom" constant="10" id="nOV-ws-XZC"/>
+                            <constraint firstItem="ZuJ-ry-VKE" firstAttribute="top" secondItem="L5g-nZ-4f2" secondAttribute="top" constant="20" id="syB-FY-34Z"/>
+                            <constraint firstItem="L5g-nZ-4f2" firstAttribute="bottom" secondItem="yCf-Lj-pIF" secondAttribute="bottom" constant="20" id="udm-gg-yY0"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="albums" image="photo" catalog="system" selectedImage="photo.fill" id="Y5e-ik-t1o"/>
+                    <connections>
+                        <outlet property="showImage" destination="ZuJ-ry-VKE" id="yiA-4c-yo0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="91M-Ov-3k9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2563" y="277"/>
         </scene>
     </scenes>
     <resources>
@@ -266,17 +361,19 @@
         <image name="command.square.fill" catalog="system" width="128" height="114"/>
         <image name="d.square" catalog="system" width="128" height="114"/>
         <image name="d.square.fill" catalog="system" width="128" height="114"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="photo.fill" catalog="system" width="128" height="93"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

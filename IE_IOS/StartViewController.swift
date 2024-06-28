@@ -49,7 +49,7 @@ class StartViewController: UIViewController {
                     destinationVC.modelexpe = modelexpe
                 }
             }
-            tabBarController.selectedIndex = 2 // Switch to the third tab
+            tabBarController.selectedIndex = 3 // Switch to the third tab
         }
 //        if let destinationVC = segue.destination as? ViewController {
 //            (model, modelexpe) = createModel()
