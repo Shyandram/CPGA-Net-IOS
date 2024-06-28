@@ -14,10 +14,12 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var cameraImage: UIImageView!
     
     var showImage: UIImage?
+    var enhanceImage: UIImage?
     var model: CoreML_CPGANet_AE20FT?
     var modelexpe: CoreML_CPGANet_expe?
     var receivedVariable: String?
     var enhanceState = false
+    var showImageState = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,7 @@ class CameraViewController: UIViewController {
     }
     */
     @IBAction func cameraPressButton(_ sender: Any) {
+        enhanceImage = nil
         let imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePicker.sourceType = .camera
@@ -61,7 +64,7 @@ class CameraViewController: UIViewController {
     }
     
     @IBAction func albumPressButton(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
+        enhanceImage = nil
         let vc = UIImagePickerController()
         vc.sourceType = .photoLibrary
         vc.delegate = self
@@ -88,6 +91,31 @@ class CameraViewController: UIViewController {
         }
     }
     
+    @IBAction func changeModelSwitch(_ sender: Any) {
+        enhanceState = false
+    }
+    
+    @IBAction func saveImage(_ sender: Any) {
+        guard let inputImage = enhanceImage else {
+            print("No image to save!")
+            return}
+        UIImageWriteToSavedPhotosAlbum(inputImage, nil, nil, nil)
+    }
+    
+    @IBAction func switchEnhanceImage(_ sender: Any) {
+        guard (enhanceImage != nil) && (showImage != nil) else{
+            print("No image to show and switch!")
+            return
+        }
+        if showImageState{
+            cameraImage.image = showImage
+            showImageState = false
+        } else{
+            cameraImage.image = enhanceImage
+            showImageState = true
+        }
+    }
+    
     func useCoreMLModel() {
         // Prepare input image
         guard var img = showImage else{
@@ -97,6 +125,7 @@ class CameraViewController: UIViewController {
         if enhanceState {
             cameraImage.image = showImage
             enhanceState = false
+            showImageState = false
             return
         }
         img = fixOrientation(of: img)
@@ -108,6 +137,7 @@ class CameraViewController: UIViewController {
         modelPrediction(index: i, pixelBuffer: pixelBuffer)
         
         enhanceState = true
+        showImageState = true
     }
     func modelPrediction(index: Int, pixelBuffer: CVPixelBuffer){
         switch index{
@@ -122,7 +152,8 @@ class CameraViewController: UIViewController {
                 let prediction = try model!.prediction(input: input)
                 // Process prediction result
                 print(prediction.colorOutput)
-                cameraImage.image = imageFromPixelBuffer(pixelBuffer: prediction.colorOutput)
+                enhanceImage = imageFromPixelBuffer(pixelBuffer: prediction.colorOutput)
+                cameraImage.image = enhanceImage
             } catch {
                 fatalError("Failed to make prediction: \(error.localizedDescription)")
             }
@@ -137,7 +168,8 @@ class CameraViewController: UIViewController {
                 let prediction = try modelexpe!.prediction(input: input)
                 // Process prediction result
                 print(prediction.colorOutput)
-                cameraImage.image = imageFromPixelBuffer(pixelBuffer: prediction.colorOutput)
+                enhanceImage = imageFromPixelBuffer(pixelBuffer: prediction.colorOutput)
+                cameraImage.image = enhanceImage
             } catch {
                 fatalError("Failed to make prediction: \(error.localizedDescription)")
             }
