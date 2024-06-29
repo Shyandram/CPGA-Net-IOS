@@ -2,9 +2,11 @@
 
 This repository contains the source code and documentation for the CPGA-Net Demo iOS App. 
 
+![](IE_IOS/Assets.xcassets/appicon.imageset/appicon.png)
+
 ## Overview
 
-The CPGA-Net Demo iOS App is a mobile application that showcases the capabilities of the CPGA-Net algorithm for image processing. It allows users to apply various image enhancement techniques and see the results in real-time.
+The CPGA-Net Demo iOS App is a mobile application that showcases the capabilities of the CPGA-Net algorithm for image processing. It allows users to apply 2 image enhancement techniques (exposure correction and low-light image enhancement) and see the results in real-time.
 
 ## Features
 
