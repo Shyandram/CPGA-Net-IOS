@@ -20,6 +20,8 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("App activate!!")
+        
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: false)
     }
     /*
     // MARK: - Navigation
@@ -72,6 +74,11 @@ class StartViewController: UIViewController {
             fatalError("Failed to load CoreML model.")
         }
         return (model, modelexpe)
+    }
+    
+    @objc func fireTimer() {
+        print("Timer fired!")
+        performSegue(withIdentifier: "MainMenu", sender: self)
     }
     
 }
